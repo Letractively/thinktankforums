@@ -1,4 +1,4 @@
-#summary ttf roadmap and tags
+#summary ttf roadmap and milestones
 #labels Phase-Requirements
 
 = ttf version 1 =
@@ -31,4 +31,3 @@ necessary features:
 *rails, mysql4/5, ajax, possibly redesigned*
 
 target release date: tba
-
