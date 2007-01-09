@@ -2,8 +2,11 @@
 #labels Phase-Requirements
 
 = ttf version 1 =
-php4, mysql4, original design, basic features
+
+*php4, mysql4, original design, basic features*
+
 target final release date: 28 jan 07
+
 necessary features:
  * search (_complete_)
  * edit (using diffs)
@@ -12,8 +15,11 @@ necessary features:
  * admin backend
 
 = ttf version 2 =
-php5, mysql4/5, ajax, possibly redesigned
+
+*php5, mysql4/5, ajax, possibly redesigned*
+
 target release date: tba
+
 necessary features:
  * ajax everything
  * new user retention features
@@ -21,5 +27,8 @@ necessary features:
  * clean up (php5 oo?)
 
 = ttf version 3 =
-rails, mysql4/5, ajax, possibly redesigned
+
+*rails, mysql4/5, ajax, possibly redesigned*
+
 target release date: tba
+
