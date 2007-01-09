@@ -1,7 +1,7 @@
 #summary ttf roadmap and milestones
-#labels Phase-Requirements
+#labels Phase-Requirements,Featured
 
-= ttf version 1 =
+= ttf v1.0 =
 
 *php4, mysql4, original design, basic features*
 
@@ -14,7 +14,7 @@ necessary features:
  * password recovery
  * admin backend
 
-= ttf version 2 =
+= ttf v2.0 =
 
 *php5, mysql4/5, ajax, possibly redesigned*
 
@@ -26,7 +26,7 @@ necessary features:
  * chat
  * clean up (php5 oo?)
 
-= ttf version 3 =
+= ttf v3.0 =
 
 *rails, mysql4/5, ajax, possibly redesigned*
 
