@@ -5,7 +5,7 @@
 
 *php4, mysql4, original design, basic features*
 
-target final release date: 28 jan 07
+target final release date: 11 feb 07
 
 necessary features:
  * search (_complete_)
