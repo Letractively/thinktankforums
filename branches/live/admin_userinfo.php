@@ -1,30 +1,15 @@
 <?php
-/* think tank forums 1.0-beta
+/* think tank forums
  *
- * Copyright (c) 2004, 2005, 2006 Jonathan Lucas Reddinger <lucas@wingedleopard.net>
- *
- * Permission to use, copy, modify, and distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- *
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- *
- ****************************************************************************
+ * admin_userinfo.php
  */
- include "common.inc.php";
+ require "common.inc.php";
  admin();
  $label = "administration » user info";
- include "header.inc.php";
+ require "header.inc.php";
  $user_id = clean($_GET["user_id"]);
  $result = mysql_query("SELECT * FROM ttf_user WHERE user_id='$user_id'");
  $user = mysql_fetch_array($result);
- mysql_free_result($result);
  if (isset($user["user_id"])) {
   if ($user["register_date"] == 0) {
    $date_reg = "never";
@@ -48,6 +33,7 @@
     <tr class="small"><td><b>user_id</b></td><td><?php echo $user["user_id"]; ?></td></tr>
     <tr class="small"><td><b>username</b></td><td><?php echo $user["username"]; ?></td></tr>
     <tr class="small"><td><b>password</b></td><td><?php echo $user["password"]; ?></td></tr>
+    <tr class="small"><td><b>permissions</b></td><td><?php echo $user["perm"]; ?></td></tr>
     <tr class="small"><td><b>email</b></td><td><?php echo $user["email"]; ?></td></tr>
     <tr class="small"><td><b>title</b></td><td><?php echo $user["title"]; ?></td></tr>
     <tr class="small"><td><b>avatar</b></td><td><?php if (isset($user["avatar_type"])) echo "<img src=\"avatars/".$user["user_id"].".".$user["avatar_type"]."\" alt=\"avatar!\" width=\"30\" height=\"30\" class=\"avatar\" />"; ?></td></tr>
@@ -59,7 +45,6 @@
     <tr class="small"><td><b>register_ip</b></td><td><?php echo $user["register_ip"]; ?></td></tr>
     <tr class="small"><td><b>visit_ip</b></td><td><?php echo $user["visit_ip"]; ?></td></tr>
     <tr class="small"><td><b>profile</b></td><td><?php echo $user["profile"]; ?></td></tr>
-    <tr class="small"><td><b>banned</b></td><td><?php echo $user["banned"]; ?></td></tr>
    </table>
    <table border="0" cellpadding="2" cellspacing="1" width="600" class="shift">
     <tr class="mediuminv"><td><b>technical implications of banning a user</b></td>
@@ -111,6 +96,5 @@
    </table>
 <?php
  } else { message("user profile","error!","not a valid user!",0,0); };
- mysql_close();
- include "footer.inc.php";
+ require "footer.inc.php";
 ?>
