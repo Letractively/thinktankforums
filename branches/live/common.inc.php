@@ -3,22 +3,16 @@
  *
  * common.inc.php
  *
- * AUDITED BY JLR 200611250159
- *
  * this script accepts NO variables.
  *
  * sanity checks are scattered throughout the script.
  * in fact, some functions herein ARE sanity checks.
- *
- * NOTICE: TRAILING WHITESPACE AT THE END OF THIS
- * FILE MAY RENDER OTHER SCRIPTS USELESS THAT REQUIRE
- * THIS SCRIPT. MAKE SURE THIS FILES ENDS WITH "?>".
  */
 
 
 // message printing
 
- function message($label, $header, $message, $a, $b) {
+function message($label, $header, $message, $a, $b) {
 	global $ttf;			// i think this is made a global here to pass to header.inc.php
 	if ($a == 1) {
 		require "header.inc.php";
@@ -30,67 +24,102 @@
   </table>
 <?php
 	if ($b == 1) require "footer.inc.php";
- };
+};
 
 
 // validate as admin
 
- function admin() {
+function admin() {
 	global $ttf;
 	if ($ttf["perm"] != 'admin') {
 	 message("ttf administration backend!","dead end.","please do not reload this page or attempt to exploit it. every <b>page view</b> is logged with {ip, timestamp, request, additional agent information}.",1,1);
 	 die();
 	};
- };
-
-// converts some html entities to tags
-
-function addtags($input) {	
-	$search = array("&lt;b&gt;",  "&lt;i&gt;",  "&lt;u&gt;", "&lt;pre&gt;", "&lt;/b&gt;", "&lt;/i&gt;", "&lt;/u&gt;", "&lt;/pre&gt;");
-	$replace = array("<b>",  "<i>",  "<u>", "<pre>", "</b>", "</i>", "</u>", "</pre>");
-	$input = str_replace($search, $replace, $input);
-	return($input);
 };
 
 
-// format text output for posts and profiles
+/* text formatting functions
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * the following functions culminate
+ * in the use of two primary use functions:
+ * outputbody() and output().
+ *
+ * outputbody() may be used to format text
+ * as suitable for posts and profiles:
+ *  -> htmlspecialchars(, ENT_COMPAT, 'UTF-8')
+ *  -> url linking
+ *	* full	(http://www.sld.tld)
+ *	* named	(ttf:http://www.sld.tld)
+ *		('my page':http://subdomain.sld.tld)
+ *	* short	(sld.tld)
+ *		(subdomain.sld.tld)
+ *  -> html tag support
+ *	* <b> . . . . </b>
+ *	* <i> . . . . </i>
+ *	* <u> . . . . </u>
+ *	* <pre> . . </pre>
+ *	* removes <br /> from <pre> . . </pre>
+ * output() may be used to make text suitable
+ * for printing.
+ */
 
-function outputbody($input)
-{
+// chop links
+function choplink($link = '') {
+	$link = str_replace(' ', '%20', $link);		// what \_/ is this block right here? --jlr
+	$short = ((strlen($link) > 60) ? substr($link, 0 , 45).'[…]'.substr($link, -10) : $link);
+	return ' <a href="'.$link.'">'.$short.'</a> ';
+};
+// <pre> and </pre> tags drop extra <br /> baggage.
+function unprebr($prestrn = '') {
+	$brless = str_replace(array('\s', '\n', '\r'), '', $prestrn);
+	return '<pre>'.$brless.'</pre>';
+};
+/* format text output for posts and profiles
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ * this must be used to keep pages xhtml compliant.
+ * it also performs additional functions as listed above.
+ */
+function outputbody($input) {
+	// convert all special characters to their html equivalent
 	$input = htmlspecialchars($input, ENT_COMPAT, 'UTF-8');
-	
-	$match_array[0] = '@(http(s)?|(s)?ftp):\/\/(([\w\/.\-\=\~\?\&\;]*)?[^\"\s\,\.\)\!\?\:\'\}\]$])@i';
-	$clean_array[0] = '<a href="$0">$0</a>';
- 
-	$match_array[1] = '@\s(\w+)\.(com|net)\s@i';
-	$clean_array[1] = ' <a href="http://$1.$2">$1.$2</a> ';
-	
-	$input = preg_replace($match_array, $clean_array, $input);
-
-	$input = addtags($input);
-
-	$input = nl2br($input);
-
+	// full url
+	$input = preg_replace('@(^|\s)(http(s)?|(s)?ftp):\/\/(([\w\/.\-\=\~\?\&]*)?[^\s\,\.\)\!\?\:\'\}\]$])@ie', 'choplink(\'$2$3$4://$5\')', $input);
+	// named url
+	$input = preg_replace('@(((\'([\w\s]+)\')?(\w+)?:))(http(s)?|(s)?ftp):\/\/(([\w\/.\-\=\~\?\&]*)?[^\s\,\.\)\!\?\:\'\}\]$])@i', '<a href="$6$7$8://$9">$4$5</a>', $input);
+	// short url
+ 	$input = preg_replace('@(^|\s)(\w+)\.(com|net|org|edu|gov)($|\s)@i', ' <a href="http://$2.$3">$2.$3</a> ', $input);
+ 	$input = preg_replace('@(^|\s)(\w+)\.(\w+)\.(com|net|org|edu|gov)($|\s)@i', ' <a href="http://$2.$3.$4">$2.$3.$4</a> ', $input);
+	// converts some html entities to tags
+	$search = array("&lt;b&gt;",  "&lt;i&gt;",  "&lt;u&gt;", "&lt;/b&gt;", "&lt;/i&gt;", "&lt;/u&gt;");
+	$replace = array("<b>",  "<i>",  "<u>", "</b>", "</i>", "</u>");
+	$input = str_replace($search, $replace, $input);
+	if (preg_match('@&lt;pre&gt;([\w\s\r\n]+)&lt;/pre&gt;@i', $input)) {
+		$input = preg_replace('@&lt;pre&gt;([\w\s\r\n]+)&lt;/pre&gt;@ie', 'unprebr(\'$1\')', $input);
+	} elseif (preg_match('@<pre>([\w\s\r\n]+)</pre>@i', $input)) {
+		return $input;
+	} else {
+		$input = nl2br($input);
+	};
 	return $input;
 };
-
-
 /* output text for non-post and non-profile uses
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *
  * this must be used to make the data xhtml compliant.
  * for example, "&" is not compliant, you must use "&amp;",
  * and this function converts that for you!
  */
-
-function output($input)
-{
+function output($input) {
 	$output = htmlspecialchars($input, ENT_COMPAT, 'UTF-8');
 	return $output;
 };
 
+
 // mysql error printing
 
- function showerror() {
+function showerror() {
 	if (mysql_error()) {
 		message("fatal error", "mysql dbms", "error ".mysql_errno().": ".mysql_error(), 1, 1); die();
 	} else {
@@ -99,7 +128,8 @@ function output($input)
  };
 
 
-/* database variables //
+/* database variables
+ * ~~~~~~~~~~~~~~~~~~
  *
  * let $dbms_host be the hostname
  *     $dbms_user be the username
@@ -107,68 +137,81 @@ function output($input)
  *     $dbms_db   be the database
  */
 
- require "../credentials.inc.php";
+require "../credentials.inc.php";
 
 
 // mysql dbms connection
 
- if (!($dbmscnx = @mysql_pconnect($dbms_host, $dbms_user, $dbms_pass))) showerror();
- if (!mysql_select_db($dbms_db)) showerror();
+if (!($dbmscnx = @mysql_pconnect($dbms_host, $dbms_user, $dbms_pass))) showerror();
+if (!mysql_select_db($dbms_db)) showerror();
 
 
 // input security cleaning
 
- function clean($input) {	// allows html, only escapes
+function clean($input) {
 	if (get_magic_quotes_gpc()) {
 		$input = stripslashes($input);
 	};
 	$output = mysql_real_escape_string(trim($input));
 	return($output);
- };
+};
 
 
 // config variables
 
- $result = mysql_query("SELECT * FROM ttf_config");
- while ($config = mysql_fetch_array($result)) $ttf_config["{$config["name"]}"] = $config["value"];
+$result = mysql_query("SELECT * FROM ttf_config");
+while ($config = mysql_fetch_array($result)) $ttf_config["{$config["name"]}"] = $config["value"];
 
 
 // check banned list
 
- $sql = "SELECT * FROM ttf_banned GROUP BY ip";
- $result = mysql_query($sql);
- while ($ban = mysql_fetch_array($result)) {
-  if ($ban["ip"] == $_SERVER["REMOTE_ADDR"]) {
-   message("think tank forums","error!","holy shit! you're banned!",1,1);
-   die();
-  };
- };
+$sql = "SELECT * FROM ttf_banned GROUP BY ip";
+$result = mysql_query($sql);
+while ($ban = mysql_fetch_array($result)) {
+	if ($ban["ip"] == $_SERVER["REMOTE_ADDR"]) {
+		message("think tank forums","error!","holy shit! you're banned!",1,1);
+		die();
+	};
+};
 
 
 // cookie management
 
- if (isset($_COOKIE["thinktank"])) {
-  list($user_id, $password) = unserialize(stripslashes($_COOKIE["thinktank"]));
-  $result = mysql_query("SELECT user_id, username, perm, avatar_type, time_zone FROM ttf_user WHERE user_id='$user_id' AND password='$password'");
-  if (mysql_num_rows($result) == 1) {
-   $user = mysql_fetch_array($result);
-   $ttf["uid"] = $user["user_id"];
-   $ttf["username"] = $user["username"];
-   $ttf["perm"] = $user["perm"];
-   $ttf["avatar_type"] = $user["avatar_type"];
-   $ttf["time_zone"] = $user["time_zone"] + $ttf_config["server_time_zone"];
-  } else { message("fatal error", "authentication", "your cookie is invalid. please <a href=\"logout.php\">logout</a> then login again.",1,1); die(); };
- };
- if (isset($ttf["uid"])) {
-  $resulta = mysql_query("UPDATE ttf_user SET visit_date=UNIX_TIMESTAMP(), visit_ip='{$_SERVER["REMOTE_ADDR"]}' WHERE user_id='{$ttf["uid"]}'");
-  $resultb = mysql_query("INSERT INTO ttf_visit VALUES ('{$ttf["uid"]}', '{$_SERVER["REMOTE_ADDR"]}', UNIX_TIMESTAMP())");
- };
+if (isset($_COOKIE["thinktank"])) {
+	list($user_id, $password) = unserialize(stripslashes($_COOKIE["thinktank"]));
+	$sql =	"SELECT user_id, username, perm, avatar_type, time_zone ".
+		"FROM ttf_user WHERE user_id='$user_id' AND password='$password'";
+	$result = mysql_query($sql);
+	if (mysql_num_rows($result) == 1) {
+		$user = mysql_fetch_array($result);
+		$ttf["uid"] = $user["user_id"];
+		$ttf["username"] = $user["username"];
+		$ttf["perm"] = $user["perm"];
+		$ttf["avatar_type"] = $user["avatar_type"];
+		$ttf["time_zone"] = $user["time_zone"] + $ttf_config["server_time_zone"];
+	} else {
+		message("fatal error", "authentication","your cookie is invalid. ".
+			"please <a href=\"logout.php\">logout</a> then login again.",1,1);
+		die();
+	};
+};
+if (isset($ttf["uid"])) {
+	$sql =	"UPDATE ttf_user SET visit_date=UNIX_TIMESTAMP(), ".
+		"visit_ip='{$_SERVER["REMOTE_ADDR"]}' WHERE user_id='{$ttf["uid"]}'";
+	$resulta = mysql_query($sql);
+	$sql =	"INSERT INTO ttf_visit VALUES ('{$ttf["uid"]}', ".
+		"'{$_SERVER["REMOTE_ADDR"]}', UNIX_TIMESTAMP())";
+	$resultb = mysql_query($sql);
+};
 
 
 // maintenance
 
- if ($ttf_config["maintenance"] && $ttf["perm"] != 'admin') {
-  message("think tank forums!","maintenance","sorry, ttf is offline for maintenance.<br />we are most likely updating scripts and adding new features! come back soon!\n", 1, 1);
-  die();
- };
+if ($ttf_config["maintenance"] && $ttf["perm"] != 'admin') {
+	message("think tank forums!","maintenance",
+		"sorry, ttf is offline for maintenance.<br />we are most likely ".
+		"updating scripts and adding new features! come back soon!\n", 1, 1);
+	die();
+};
+
 ?>
