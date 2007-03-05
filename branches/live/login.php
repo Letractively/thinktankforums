@@ -2,21 +2,8 @@
 /* think tank forums
  *
  * login.php
- *
- * AUDITED BY JLR 200611250126
- *
- * this script accepts the following variables:
- * 	$_POST["username"]	clean
- *	$_POST["password"]	clean
- *
- * sanity checks include:
- * 	user not already logged in
- * 	both username and password are specified
- * 	username/password combination valid
- * 	user not banned
- * 	includes are REQUIRED
  */
- require "common.inc.php";
+ require "include_common.php";
  if (!isset($ttf["uid"]) && isset($_POST["username"]) && isset($_POST["password"])) {
   $username = clean($_POST["username"]);
   $password = sha1(clean($_POST["password"]));

@@ -2,12 +2,6 @@
 /* think tank forums
  *
  * footer.inc.php
- *
- * AUDITED BY JLR 200611250138
- *
- * this script accepts NO variables.
- *
- * being an include script, there are no sanity checks.
  */
 ?>
    <!-- begin footer.inc.php -->
