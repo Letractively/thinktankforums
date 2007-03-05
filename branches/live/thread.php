@@ -12,7 +12,7 @@
  * 	valid thread exists
  *	includes are REQUIRED
  */
-require "common.inc.php";
+require "include_common.php";
 $thread_id = clean($_GET["thread_id"]);
 $sql = "SELECT ttf_thread.forum_id, ttf_thread.title, ttf_forum.name
         FROM ttf_thread, ttf_forum
@@ -30,7 +30,7 @@ if (isset($thread["title"])) {
 	};
 $label = "<a href=\"forum.php?forum_id=".$thread["forum_id"]."\">".$thread["name"]."</a> » ".output($thread["title"]);
 // should forum name above be run through output() ? --jlr
-require "header.inc.php";
+require "include_header.php";
 $sql = "SELECT ttf_post.post_id, ttf_post.author_id, ttf_post.date, ttf_post.body,
 	ttf_user.username, ttf_user.title, ttf_user.avatar_type
 	FROM ttf_post, ttf_user
@@ -87,5 +87,5 @@ while ($post = mysql_fetch_array($result)) {
 } else {
 	message("view thread","error!","not a valid thread.",0,0);
 };
-require "footer.inc.php";
+require "include_footer.php";
 ?>
