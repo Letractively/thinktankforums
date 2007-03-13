@@ -1,5 +1,5 @@
 #summary requirements for running ttf
-#labels Phase-Deploy
+#labels Phase-Deploy,Featured
 
 = minimum requirements =
 
