@@ -3,30 +3,24 @@
 
 = ttf v1.0 =
 
-*php 4, mysql 4.0, original design, basic features*
+*php 4/5, mysql 4.1, original design, basic features*
 
-target final release date: 04-mar-2007
+target final release date: 18-mar-2007
 
 necessary features:
  * search (_complete_)
- * edit (using revisions)
- * archive
+ * archive (_complete_)
  * password recovery
  * administrative back-end
 
 = ttf v2.0 =
 
-*php 5, mysql 4.1/5, ajax, mootools, possibly redesigned*
+*php 5, mysql 4.1/5, ajax, possibly redesigned*
 
 target release date: tba
 
 necessary features:
  * ajax everything
+ * use a php framework
  * new user retention features
  * chat
-
-= ttf v3.0 =
-
-*rails, mysql4/5, ajax, possibly redesigned*
-
-target release date: tba
