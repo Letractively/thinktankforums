@@ -1,0 +1,10 @@
+#summary requirements for running ttf
+#labels Phase-Deploy
+
+= minimum requirements =
+
+  * php 4 minimum, php 5 recommended
+
+  * php pecl extensions (php_exif, php_gd2, php_mysql)
+
+  * mysql 4.1
