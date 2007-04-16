@@ -3,8 +3,8 @@
 
 = minimum requirements =
 
-  * php 5
+  * mysql 4.1
+
+  * php 4
 
   * php pecl extensions (php_exif, php_gd2, php_mysql)
-
-  * mysql 4.1
