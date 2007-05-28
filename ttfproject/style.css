@@ -44,6 +44,11 @@ h1 {
     font-weight: bold;
 }
 
+h2 {
+    font-size: 90%;
+    font-weight: bold;
+}
+
 p {
     font-size: 80%;
 }
