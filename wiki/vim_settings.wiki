@@ -8,4 +8,6 @@
 
 `set expandtab`
 
+`colorscheme elflord`
 
+`set nobackup`
