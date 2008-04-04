@@ -1,13 +1,10 @@
 #summary recommended vim settings
+#labels Phase-Implementation
 
-= lr recommends =
+== use these! =
 
-`set ts=4`
-
-`set sw=4`
-
-`set expandtab`
-
-`colorscheme elflord`
-
-`set nobackup`
+  * `set ts=4`
+  * `set sw=4`
+  * `set expandtab`
+  * `colorscheme elflord`
+  * `set nobackup`
