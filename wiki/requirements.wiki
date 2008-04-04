@@ -1,7 +1,7 @@
 #summary requirements for running ttf
 #labels Phase-Deploy,Featured
 
-= minimum requirements =
+== minimum requirements ==
 
   * mysql 4.1
 
