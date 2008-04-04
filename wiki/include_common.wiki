@@ -1,20 +1,21 @@
-#summary map of common functions
-#labels Phase-Design
+#summary design and list of common functions
+#labels Phase-Design,Phase-Implementation
 
-message($label, $title, $body)
+== design guide for common functions ==
 
-formatdate($timestamp, $format = "M j, Y, g\:i a")
+it is nice to put common functions in a place that can be called by all scripts. however, we don't want to put _every_ function there, because many functions will be script specific.
 
-admin()
+  * if a function is duplicated in two or more scripts, it should be migrated to include_common.php.
+  * if a function is in include_common.php but is only used in one script, it should be migrated to that specific script.
 
-outputbody($input)
+== list of functions in include_common.php ==
 
-output($input)
-
-showerror()
-
-clean($input)
-
-validateEmail($email)
-
-deleteAvatar()
+  * message($label, $title, $body)
+  * formatdate($timestamp, $format = "M j, Y, g\:i a")
+  * admin()
+  * outputbody($input)
+  * output($input)
+  * showerror()
+  * clean($input)
+  * validateEmail($email)
+  * deleteAvatar()
