@@ -1,0 +1,340 @@
+/* think tank forums
+ *
+ * style.css
+ */
+
+body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: white;
+    background-image: url(bg.gif);
+    color: black;
+    font-size: 10pt;
+    font-family: verdana, sans-serif;
+}
+
+#header {
+    padding-left: 25px;
+    margin-bottom: -0.2em;
+    font-size: 36pt;
+    font-weight: bold;
+    width: 600px;
+}
+
+#header a {
+    color: white;
+    text-decoration: none;
+}
+
+#title {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 25px;
+    color: black;
+    background-color: white;
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+#enclosure {
+    clear: both;
+    padding: 1px 25px 25px 25px;
+    width: 800px;
+}
+
+.menu_title {
+    clear: right;
+    float: right;
+    margin-top: 25px;
+    padding: 2px;
+    width: 171px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.menu_title img {
+    vertical-align: middle;
+}
+
+.menu_body {
+    float: right;
+    clear: right;
+    margin-top: 1px;
+    padding: 5px;
+    width: 165px;
+    color: black;
+    background-color: white;
+    font-size: 8pt;
+}
+
+.sidebox {
+    float: right;
+    clear: right;
+    margin-top: 25px;
+    padding: 10px;
+    width: 155px;
+    color: black;
+    background-color: white;
+    text-align: center;
+}
+
+.contenttitle {
+    margin-top: 25px;
+    padding: 2px;
+    width: 596px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.contenttitle_sm {
+    margin-top: 25px;
+    padding: 5px;
+    width: 590px;
+    color: white;
+    background-color: black;
+    font-size: 8pt;
+}
+
+.contentbox {
+    margin-top: 1px;
+    padding: 2px;
+    width: 596px;
+    color: black;
+    background-color: white;
+}
+
+.contentbox_sm {
+    margin-top: 1px;
+    padding: 5px;
+    width: 590px;
+    color: black;
+    background-color: white;
+    font-size: 8pt;
+}
+
+
+/***************
+ * FONT STYLES *
+ ***************/
+
+a, a:active, a:link, a:visited {
+    color: black;
+}
+
+.small {
+    font-size: 8pt;
+}
+
+.medium {
+    font-size: 10pt;
+}
+
+.highlight {
+    background-color: #00ff33;
+}
+
+.error {
+    background-color: red;
+}
+
+/****************
+ * TABLE STYLES *
+ ****************/
+
+table.content {
+    margin-top: 24px;
+    width: 600px;
+}
+
+table.float {
+    margin-top: 24px;
+    width: 288px;
+}
+
+col#mark {
+    width: 40px;
+}
+
+col#forum {
+    width: 400px;
+}
+
+col#forum_lg {
+    width: 465px;
+}
+
+col#freshies {
+    width: 65px;
+}
+
+col#thread {
+    width: 304px;
+}
+
+col#author {
+    width: 120px;
+}
+
+col#threads {
+    width: 65px;
+}
+
+col#posts {
+    width: 65px;
+}
+
+col#views {
+    width: 65px;
+}
+
+col#bold {
+    font-weight: bold;
+}
+
+th {
+    padding: 2px;
+    color: white;
+    background-color: black;
+    text-align: left;
+}
+
+td {
+    padding: 2px;
+    color: black;
+    background-color: white;
+}
+
+
+/***************
+ * FORM STYLES *
+ ***************/
+
+textarea {
+    font-family: verdana, sans-serif;
+    border-style: solid;
+    border-width: 0;
+}
+
+textarea.reply {
+    font-family: verdana, sans-serif;
+    width: 590px;
+    height: 140px;
+    color: black;
+    font-size: 11px;
+    background-color: white;
+    margin: 5px;
+}
+
+textarea.profile {
+    font-family: verdana, sans-serif;
+    width: 588px;
+    color: black;
+    font-size: 11px;
+    background-color: white;
+    margin: 3px;
+}
+
+input, select {
+    font-family: verdana, sans-serif;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: white;
+    color: black;
+    margin: 1px 0;
+}
+
+input.reply {
+    font-family: verdana, sans-serif;
+    border-width: 0;
+    background-color: black;
+    color: white;
+    width: 600px;
+}
+
+form {
+    font-family: verdana, sans-serif;
+    margin: 0;
+}
+
+
+/********************
+ * REPLY BOX STYLES *
+ ********************/
+
+#reply_button {
+    width: 600px;
+    height: 20px;
+    background-color: black;
+}
+
+#reply_textarea {
+    margin-top: 25px;
+    width: 600px;
+    height: 150px;
+    background-color: white;
+}
+
+/******************
+ * USERBAR STYLES *
+ ******************/
+
+.avatar {
+    border: 0;
+    margin: 1px;
+    padding: 0;
+    display: block;
+}
+
+.userbar {
+    width: 596px;
+    margin-top: 25px;
+    padding: 2px;
+    background-color: black;
+    color: white;
+    font-size: 8pt;
+    line-height: 12pt;
+    height: 30px;
+    overflow: hidden;
+}
+
+.userbar_left {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 4px;
+}
+
+.userbar_right {
+    float: right;
+    height: 30px;
+    margin: 0 4px 0 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2px;
+    margin-left: 10px;
+    text-align: right;
+    /* these statements do not effectively center the text vertically! */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.username {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+a.username, a.username:link, a.username:active, a.username:visited,
+a.link, a.link:link, a.link:active, a.link:visited {
+    color: white;
+}
+
+pre, blockquote {
+	overflow: auto;
+	margin: 10px 0 0 0;
+	padding: 2px;
+	border-top: 1px solid black;
+	border-left: 5px solid black;
+}
