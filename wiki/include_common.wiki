@@ -1,0 +1,20 @@
+#summary map of common functions
+#labels Phase-Design
+
+message($label, $title, $body)
+
+formatdate($timestamp, $format = "M j, Y, g\:i a")
+
+admin()
+
+outputbody($input)
+
+output($input)
+
+showerror()
+
+clean($input)
+
+validateEmail($email)
+
+deleteAvatar()
