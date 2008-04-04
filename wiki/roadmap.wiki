@@ -1,20 +1,17 @@
 #summary ttf roadmap and milestones
 #labels Phase-Requirements,Featured
 
-= ttf v1.0 =
+== ttf v1.0 ==
 
 *original design, basic features*
 
-projected release candidate date: 12 may 2007
+  * projected release candidate date: 15 apr 2008
+  * projected final release date: 01 may 2008
 
-projected final release date: tba
+== ttf v2.0 ==
 
-= ttf v2.0 =
-
-*web 2.0 with mootools*
+*tag-based greatness*
 
 necessary features:
- * ajax everything with mootools
- * slick gui features with moo.fx
- * consider using a php framework
- * new user retention features
+  * ajax everything
+  * slick gui features
