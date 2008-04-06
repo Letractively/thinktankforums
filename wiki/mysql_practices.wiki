@@ -7,4 +7,3 @@ _always_ follow these if you are working with ttf's mysql queries. if you disagr
 
   * do not specify `LIMIT 1` if you are already specifying a unique key in a `WHERE` clause.
   * do not use `mysql_free_result()`. they are freed when the script terminates anyway.
-  * don't bother using single-quotes around numeric values in clauses (e.g., `WHERE forum_id=$forum_id`, _not_ `WHERE forum_id='$forum_id'`).
