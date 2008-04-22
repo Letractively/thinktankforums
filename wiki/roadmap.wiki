@@ -1,17 +1,31 @@
-#summary ttf roadmap and milestones
+﻿#summary ttf roadmap and milestones
 #labels Phase-Requirements,Featured
 
 == ttf v1.0 ==
 
 *original design, basic features*
 
+  * improved freshie management
+  * revision tracker (feed)
+  * more administrative tools
+  * valid XHTML, CSS
+  * extremely portable
+  * pagination
+
   * projected release candidate date: 15 apr 2008
   * projected final release date: 01 may 2008
 
+== ttf v1.5 ==
+
+*transition to tags*
+
+  * no more categories/forums
+  * threads are conversations
+  * use tags (global and private)
+
 == ttf v2.0 ==
 
-*tag-based greatness*
+*tag-based ajax greatness*
 
-necessary features:
   * ajax everything
   * slick gui features
