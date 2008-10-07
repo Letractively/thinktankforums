@@ -1,5 +1,0 @@
-* forums with no threads have one freshie
-* replace arrow in forum.php
-* pagination
-* remove the archive feature
-* style message(,,isarray()) 
