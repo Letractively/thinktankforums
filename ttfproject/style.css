@@ -12,13 +12,8 @@ body {
     font-family: sans-serif;
 }
 
-a:link, a:active, a:visited {
+a {
     color: #50260d;
-}
-
-a:hover {
-    color: #000000;
-    text-decoration: none;
 }
 
 #header img {
