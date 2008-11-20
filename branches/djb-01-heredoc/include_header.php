@@ -8,11 +8,11 @@ header('Content-Type: text/html; charset=utf-8');
 
 if (empty($ttf_title)) {
     $ttf_htmltitle = $ttf_cfg["forum_name"];
-}else{
-	$ttf_htmltitle = $ttf_cfg["forum_name"]." &raquo; ".$ttf_title;
+} else {
+    $ttf_htmltitle = $ttf_cfg["forum_name"]." &raquo; ".$ttf_title;
 };
 
-print <<<EOF
+echo <<<EOF
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
@@ -21,30 +21,37 @@ print <<<EOF
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
-        <h1><a href="./">{$ttf_cfg[forum_name]}</a></h1>
+        <h1><a href="./">{$ttf_cfg["forum_name"]}</a></h1>
         <h2>$ttf_label</h2>
         <div id="enclosure">
             <div class="menu_title">
+
 EOF;
 
 if (isset($ttf["uid"])) {
+
     if (isset($ttf["avatar_type"])) {
-		print "<img src=\"avatars/{$ttf[uid]}.{$ttf[avatar_type]}\" alt=\"your avatar\" width=\"30\" height=\"30\" class=\"avatar\" />";
+        echo '                <img src="avatars/'.$ttf["uid"].'.'.$ttf["avatar_type"].'" alt="your avatar" width="30" height="30" class="avatar" />'."\n";
     };
-	print <<<EOF
-                hi, {$ttf[username]}!
+
+    echo <<<EOF
+                hi, {$ttf["username"]}!
             </div>
             <div class="menu_body">
                 &middot; <a href="search.php">search</a><br />
                 &middot; <a href="editprofile.php">edit your profile</a><br />
+
 EOF;
+    
     if ($ttf["perm"] == 'admin') {
-		print "&middot; <a href=\"admin_userlist.php\">user list</a><br />";
+        echo '                &middot; <a href="admin_userlist.php">user list</a><br />'."\n";
     };
-	print "&middot; <a href=\"logout.php\">log out</a>";
+
+    echo '                &middot; <a href="logout.php">log out</a>'."\n";
+
 } else {
-	print <<<EOF
-                log in to {$ttf_cfg[forum_shortname]}
+    echo <<<EOF
+                log in to {$ttf_cfg["forum_shortname"]}
             </div>
             <div class="menu_body">
                 <form action="login.php" method="post">
@@ -62,8 +69,10 @@ EOF;
                 &middot; <a href="register.php">register an account</a><br />
                 &middot; <a href="recover.php">recover your account</a><br />
                 &middot; <a href="search.php">search the forums</a>
-			
+
 EOF;
+
 };
+
 ?>
-</div>
+            </div>
