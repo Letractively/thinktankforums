@@ -42,7 +42,7 @@ if (isset($ttf["uid"])) {
                 &middot; <a href="editprofile.php">edit your profile</a><br />
 
 EOF;
-    
+
     if ($ttf["perm"] == 'admin') {
         echo '                &middot; <a href="admin_userlist.php">user list</a><br />'."\n";
     };
@@ -50,6 +50,7 @@ EOF;
     echo '                &middot; <a href="logout.php">log out</a>'."\n";
 
 } else {
+
     echo <<<EOF
                 log in to {$ttf_cfg["forum_shortname"]}
             </div>
