@@ -64,11 +64,15 @@
             Last updated on 2008-11-03.
             This page is <a href="http://validator.w3.org/check?uri=referer">valid XHTML 1.1</a>.
         </div>
-        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
         </script>
         <script type="text/javascript">
-            _uacct = "UA-2195624-1";
-            urchinTracker();
+            try {
+            var pageTracker = _gat._getTracker("UA-2195624-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
         </script>
     </body>
 </html>
