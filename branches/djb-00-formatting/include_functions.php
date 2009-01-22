@@ -4,7 +4,7 @@
  * include_functions.php
  */
 
-require_once('classTextile.php');
+
 
 /* message printing
  * ~~~~~~~~~~~~~~~~
@@ -146,6 +146,14 @@ function formatdate($timestamp, $format = "Y M j, g\:i a") {
  */
 function outputbody($input) {
 
+    if ($input === NULL) {
+
+        return '<div class="archivedpost">this post has been archived.</div>';
+
+    };
+
+    // convert all special characters to their html equivalent
+    $input = htmlspecialchars($input, ENT_COMPAT, 'UTF-8');
 
     // chop links
     if (!function_exists('choplink')) {
@@ -158,26 +166,49 @@ function outputbody($input) {
         };
 
     };
-	//////////////////
-	// url auto-linking //
-	//////////////////
-	
+
     // full url
-	$input = preg_replace('@\b(?<![\":])				# blocking named urls from being stepped on
-			((https?|ftps?)://)							# checking for protocol eg. http:\\
-			([\w\d.\-\_]+)								# hostname, domain, and tld
-			([\S]*)(?<![.,?!])							# everything but whitespace, disallow punc. at the end
-			@iex', 'choplink(\'$1$3$4\')', $input);
+    $input = preg_replace('@(^|\s)(http(s)?|(s)?ftp):\/\/(([\w\/.\-\=\~\?\&\,\.]*)?[^\s\,\.\)\!\?\:\'\}\]$]+)@ie', 'choplink(\'$2://$5\')', $input);
+
+    // named url
+    $input = preg_replace('@(((\'([\w\s.?\!?\@?\:?\-?]+)\')?([\w.?\!?\@?\:?\-?]+)?:))(http(s)?|(s)?ftp(s)?):\/\/(([\w\/.\-\=\~\?\&]*)?[^\s\,\.\)\!\?\:\'\}\]$]+)@i', '<a href="$6://$10">$4$5</a>', $input);
 
     // short url
-	$input = preg_replace('@(?:^|([\s]+))				# blocking named/full urls from being stepped on
-			([\w\d\.\-\_]+)								# checking for hostname and domain
-			(com|net|org|edu|gov|cd|fm)/?				# tlds allowed
-			@ix', '$1<a href="http://$2$3">$2$3</a>', $input); 
+    $input = preg_replace('@(^|\s)(\w+)\.(com|net|org|edu|gov)($|\s)@i', ' <a href="http://$2.$3">$2.$3</a> ', $input);
+    $input = preg_replace('@(^|\s)(\w+)\.(\w+)\.(com|net|org|edu|gov)($|\s)@i', ' <a href="http://$2.$3.$4">$2.$3.$4</a> ', $input);
 
-	$textile = new Textile();
-	$print = $textile->TextileThis($input);
-	
+    // converts some html entities to tags
+    $search =  array("&lt;b&gt;",            "&lt;/b&gt;",
+                     "&lt;i&gt;",            "&lt;/i&gt;",
+                     "&lt;u&gt;",            "&lt;/u&gt;",
+                     "&lt;blockquote&gt;",   "&lt;/blockquote&gt;");
+    $replace = array("<b>",                 "</b>",
+                     "<i>",                 "</i>",
+                     "<span style=\"text-decoration: underline;\">", "</span>",
+                     "<blockquote><p>",     "</p></blockquote>");
+    $input = str_replace($search, $replace, $input);
+
+    if (strpos($input, '&lt;pre&gt;') !== FALSE) {
+        $open_split = explode('&lt;pre&gt;', $input);
+        foreach ($open_split as $var) {
+            $close_split = explode('&lt;/pre&gt;', $var);
+            foreach ($close_split as $doubly) {
+                $alternate[] = $doubly;
+            };
+        };
+        $print = '';
+        $br = 1;
+        foreach ($alternate as $finally) {
+            if ($br % 2) {
+                $print .= nl2br($finally);
+            } else {
+                $print .= '<pre>'.$finally.'</pre>';
+            };
+            $br++;
+        };
+    } else {
+        $print = nl2br($input);
+    };
 
     return $print;
 

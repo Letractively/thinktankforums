@@ -88,7 +88,6 @@ $sql = "SELECT ttf_post.post_id,                    ".
        "FROM ttf_post, ttf_user                     ".
        "WHERE ttf_post.author_id=ttf_user.user_id   ".
        "   && ttf_post.thread_id='$thread_id'       ".
-       "   && ttf_post.archive IS NULL              ".
        "ORDER BY date ASC                           ";
 if (!$result = mysql_query($sql)) showerror();
 
@@ -144,8 +143,7 @@ while ($post = mysql_fetch_array($result)) {
     if ($hasperm) {
 
 ?>
-                    <a class="link" href="editpost.php?post_id=<?php echo $post["post_id"]; ?>">edit</a>,
-                    <a class="link" href="archivepost.php?post_id=<?php echo $post["post_id"]; ?>">archive</a>
+                    <a class="link" href="revise.php?post_id=<?php echo $post["post_id"]; ?>">revise</a>
 <?php
 
     };
