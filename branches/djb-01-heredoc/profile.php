@@ -50,8 +50,7 @@ list($titlerev) = mysql_fetch_array($result);
 
 $sql = "SELECT COUNT(*)             ".
        "FROM ttf_post               ".
-       "WHERE author_id='$user_id'  ".
-       "   && archive IS NULL       ";
+       "WHERE author_id='$user_id'  ";
 if (!$result = mysql_query($sql)) showerror();
 list($numposts) = mysql_fetch_array($result);
 
@@ -132,7 +131,6 @@ $sql = "SELECT ttf_post.post_id,                        ".
        "LEFT JOIN ttf_thread                            ".
        "  ON ttf_post.thread_id=ttf_thread.thread_id    ".
        "WHERE ttf_post.author_id='$user_id'             ".
-       "   && ttf_post.archive IS NULL                  ".
        "ORDER BY date DESC LIMIT 5                      ";
 if (!$result = mysql_query($sql)) showerror();
 if (mysql_num_rows($result) != 0) {
