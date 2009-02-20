@@ -59,8 +59,7 @@ list($titlerev) = mysql_fetch_array($result);
 
 $sql = "SELECT COUNT(*)             ".
        "FROM ttf_post               ".
-       "WHERE author_id='$user_id'  ".
-       "   && archive IS NULL       ";
+       "WHERE author_id='$user_id'  ";
 if (!$result = mysql_query($sql)) showerror();
 list($numposts) = mysql_fetch_array($result);
 
@@ -185,19 +184,19 @@ while ($rev = mysql_fetch_array($result)) {
     // format the date
     $date = formatdate($rev["maxdate"]);
 
-?>
+echo <<<EOF
                     <tr>
-                        <td><?php echo $rev["ip"]; ?></td>
-                        <td><span title="<?php echo $date[1]; ?>"><?php echo $date[0]; ?></span></td>
+                        <td>{$rev["ip"]}</td>
+                        <td><span title="{$date[1]}">{$date[0]}</span></td>
                     </tr>
-<?php
+EOF;
 
 };
 
-?>
+echo <<<EOF
                 </tbody>
             </table>
-<?php
+EOF;
 
 require_once "include_footer.php";
 
