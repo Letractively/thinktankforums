@@ -12,9 +12,6 @@
   * extremely portable
   * pagination
 
-  * projected release candidate date: 27 apr 2008
-  * projected final release date: 04 may 2008
-
 == ttf v1.5 ==
 
 *transition to tags*
