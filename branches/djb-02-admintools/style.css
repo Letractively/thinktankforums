@@ -1,0 +1,386 @@
+/* think tank forums
+ *
+ * style.css
+ */
+
+* {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background-color: white;
+    background-image: url(bg.gif);
+    color: black;
+    font-size: 10pt;
+    font-family: verdana, sans-serif;
+}
+
+h1 {
+    padding-left: 25px;
+    margin-bottom: -0.2em;
+    font-size: 36pt;
+    font-weight: bold;
+    width: 600px;
+    color: white;
+}
+
+h1 a, h1 a:active, h1 a:link, h1 a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+h2 {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 25px;
+    color: black;
+    background-color: white;
+    font-size: 11pt;
+    font-weight: bold;
+}
+
+#enclosure {
+    clear: both;
+    padding: 1px 25px 25px 25px;
+    width: 800px;
+}
+
+.menu_title {
+    clear: right;
+    float: right;
+    margin-top: 25px;
+    padding: 2px;
+    width: 171px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.menu_title img.avatar {
+    vertical-align: middle;
+}
+
+.menu_body {
+    float: right;
+    clear: right;
+    margin-top: 1px;
+    padding: 5px;
+    width: 165px;
+    color: black;
+    background-color: white;
+    font-size: 8pt;
+}
+
+.sidebox {
+    float: right;
+    clear: right;
+    margin-top: 25px;
+    padding: 10px;
+    width: 155px;
+    color: black;
+    background-color: white;
+    text-align: center;
+}
+
+.contenttitle {
+    margin-top: 25px;
+    padding: 2px;
+    width: 596px;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+}
+
+.contenttitle_sm {
+    margin-top: 25px;
+    padding: 5px;
+    width: 590px;
+    color: white;
+    background-color: black;
+    font-size: 8pt;
+}
+
+.contentbox {
+    margin-top: 1px;
+    padding: 2px;
+    width: 596px;
+    color: black;
+    background-color: white;
+}
+
+.contentbox_sm {
+    margin-top: 1px;
+    padding: 5px;
+    width: 590px;
+    color: black;
+    background-color: white;
+    font-size: 8pt;
+}
+
+ul {
+    padding: 0 1.5em;
+}
+
+
+/***************
+ * FONT STYLES *
+ ***************/
+
+a, a:active, a:link, a:visited {
+    color: black;
+}
+
+.small {
+    font-size: 8pt;
+}
+
+.medium {
+    font-size: 10pt;
+}
+
+.highlight {
+    background-color: #00ff33;
+}
+
+.lowlight .error {
+    background-color: #ff0033;
+}
+
+.tip {
+    border-bottom: 1px dashed black;
+}
+
+.tip:hover {
+    cursor: help;
+}
+
+.center {
+    text-align: center;
+}
+
+/****************
+ * TABLE STYLES *
+ ****************/
+
+table.content {
+    margin-top: 24px;
+    width: 600px;
+}
+
+table.float {
+    margin-top: 24px;
+    float: left;
+}
+
+col#mark {
+    width: 40px;
+}
+
+col#forum {
+    width: 400px;
+}
+
+col#forum_lg {
+    width: 465px;
+}
+
+col#freshies {
+    width: 65px;
+}
+
+col#thread {
+    width: 304px;
+}
+
+col#author {
+    width: 120px;
+}
+
+col#threads {
+    width: 65px;
+}
+
+col#posts {
+    width: 65px;
+}
+
+col#views {
+    width: 65px;
+}
+
+th {
+    padding: 2px;
+    color: white;
+    background-color: black;
+    text-align: left;
+}
+
+td {
+    padding: 2px;
+    color: black;
+    background-color: white;
+}
+
+
+/***************
+ * FORM STYLES *
+ ***************/
+
+textarea {
+    font-family: verdana, sans-serif;
+    border-style: solid;
+    border-width: 0;
+}
+
+textarea.reply, textarea.newthread, textarea.editpost {
+    font-family: verdana, sans-serif;
+    width: 590px;
+    color: black;
+    font-size: 11px;
+    background-color: white;
+    margin: 5px;
+}
+
+textarea.profile {
+    font-family: verdana, sans-serif;
+    width: 588px;
+    color: black;
+    font-size: 11px;
+    background-color: white;
+    margin: 3px;
+}
+
+input, select {
+    font-family: verdana, sans-serif;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: white;
+    color: black;
+    margin: 1px 0;
+}
+
+input.reply, input.archivepost, input.editpost, input.editprofile, input.newthread_button {
+    font-family: verdana, sans-serif;
+    border-width: 0;
+    background-color: black;
+    color: white;
+    width: 600px;
+}
+
+input.newthread_title {
+    font-family: verdana, sans-serif;
+    border-width: 0px;
+    background-color: white;
+    color: black;
+    width: 596px;
+    margin: 2px;
+}
+
+form {
+    font-family: verdana, sans-serif;
+    margin: 0;
+}
+
+
+/************************
+ * PAGE-SPECIFIC STYLES *
+ ************************/
+
+#reply_button, #editpost_button, #newthread_button {
+    width: 600px;
+    height: 20px;
+    background-color: black;
+}
+
+#editprofile_button, #editpost_button {
+    width: 600px;
+    margin-top: 25px;
+    height: 20px;
+    background-color: black;
+}
+
+#newthread_title {
+    width: 600px;
+    background-color: white;
+}
+
+#reply_textarea, #newthread_textarea {
+    margin-top: 25px;
+    width: 600px;
+    background-color: white;
+}
+
+#editpost_textarea {
+    width: 600px;
+    background-color: white;
+}
+
+#editpost_archive {
+    padding: 3px;
+    width: 594px;
+    background-color: white;
+}
+
+
+/******************
+ * USERBAR STYLES *
+ ******************/
+
+.userbar {
+    width: 598px;
+    margin-top: 25px;
+    padding: 1px;
+    background-color: black;
+    color: white;
+    font-size: 8pt;
+    line-height: 12pt;
+    height: 32px;
+    overflow: hidden;
+}
+
+.userbar_left {
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 1px 4px 1px 1px;
+}
+
+.userbar_right {
+    float: right;
+    height: 32px;
+    padding: 0px 3px 0px 10px;
+    text-align: right;
+}
+
+.username {
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+a.username, a.username:link, a.username:active, a.username:visited,
+a.link, a.link:link, a.link:active, a.link:visited {
+    color: white;
+}
+
+
+/***************
+ * POST STYLES *
+ ***************/
+
+pre, blockquote {
+    overflow: auto;
+    margin: 10px 0 0 0;
+    padding: 2px;
+    border-top: 1px solid black;
+    border-left: 5px solid black;
+}
+
+.archivedpost {
+    border: 1px dashed red;
+    text-align: center;
+}
+
