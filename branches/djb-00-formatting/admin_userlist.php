@@ -27,6 +27,8 @@ require_once "include_header.php";
                 <tbody>
 <?php
 
+$timeout = 60*60*24*7*2; // two weeks of seconds (s*m*h*d*w)
+
 $sql = "SELECT user_id,     ".
        "       username,    ".
        "       email,       ".
@@ -40,7 +42,6 @@ while ($user = mysql_fetch_array($result)) {
 
     // highlight visitors within the last two weeks
     unset($visithl);
-    $timeout = 60*60*24*7*2; // two weeks of seconds (s*m*h*d*w)
     if ($user["visit_date"] > (time() - $timeout)) {
         $visithl = " class=\"highlight\"";
     };
