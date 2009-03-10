@@ -35,6 +35,7 @@ $sql = "SELECT user_id,     ".
        "       visit_date,  ".
        "       perm         ".
        "FROM ttf_user       ".
+       "WHERE (visit_date IS NOT NULL) || ( (UNIX_TIMESTAMP() - register_date) < $timeout ) ".
        "ORDER BY user_id    ";
 if (!$result = mysql_query($sql)) showerror();
 
