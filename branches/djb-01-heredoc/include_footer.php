@@ -3,11 +3,13 @@
  *
  * include_footer.php
  */
+
 echo <<<EOF
             <br style="clear: both;" />
         </div>
     </body>
 </html>
+
 EOF;
 
 $time_end = microtime(true);

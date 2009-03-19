@@ -25,6 +25,7 @@ echo <<<EOF
                     </tr>
                 </thead>
                 <tbody>
+
 EOF;
 
 $timeout = 60*60*24*7*2; // two weeks of seconds (s*m*h*d*w)

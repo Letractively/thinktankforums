@@ -76,6 +76,7 @@ echo <<<EOF
                     </div>
                 </form>
             </div>
+
 EOF;
 
 require_once "include_footer.php";

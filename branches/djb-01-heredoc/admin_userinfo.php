@@ -184,11 +184,12 @@ while ($rev = mysql_fetch_array($result)) {
     // format the date
     $date = formatdate($rev["maxdate"]);
 
-echo <<<EOF
+    echo <<<EOF
                     <tr>
                         <td>{$rev["ip"]}</td>
                         <td><span title="{$date[1]}">{$date[0]}</span></td>
                     </tr>
+
 EOF;
 
 };
@@ -196,6 +197,7 @@ EOF;
 echo <<<EOF
                 </tbody>
             </table>
+
 EOF;
 
 require_once "include_footer.php";

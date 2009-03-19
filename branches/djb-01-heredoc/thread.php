@@ -110,9 +110,10 @@ while ($post = mysql_fetch_array($result)) {
 
     };
 
-echo <<<EOF
+    echo <<<EOF
             <div class="userbar" id="post-{$post["post_id"]}">
                 <div class="userbar_left">
+
 EOF;
 
     if (!empty($post["avatar_type"])) {
@@ -127,9 +128,10 @@ EOF;
 
     };
 
-echo <<<EOF
+    echo <<<EOF
                 </div>
                 <div class="userbar_right"><span title="{$date[1]}">{$date[0]}</span><br />
+
 EOF;
 
     if ($post["rev"] > 0) {
@@ -165,7 +167,7 @@ EOF;
 // if user is logged in, print a reply box
 if (isset($ttf["uid"])) {
 
-echo <<<EOF
+    echo <<<EOF
             <form action="reply.php" method="post">
                 <div id="reply_textarea">
                     <textarea class="reply" cols="72" rows="12" name="body" wrap="virtual"></textarea>
@@ -177,6 +179,7 @@ echo <<<EOF
                     <input type="hidden" name="thread_id" value="{$thread_id}" />
                 </div>
             </form>
+
 EOF;
 
 };

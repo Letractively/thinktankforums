@@ -122,7 +122,9 @@ echo <<<EOF
                     </tr>
                 </tbody>
             </table>
+
 EOF;
+
 $sql = "SELECT ttf_post.post_id,                        ".
        "       ttf_post.thread_id,                      ".
        "       ttf_post.date,                           ".
@@ -134,7 +136,8 @@ $sql = "SELECT ttf_post.post_id,                        ".
        "ORDER BY date DESC LIMIT 5                      ";
 if (!$result = mysql_query($sql)) showerror();
 if (mysql_num_rows($result) != 0) {
-echo <<<EOF
+
+    echo <<<EOF
             <table cellspacing="1" class="content">
                 <thead>
                     <tr>
@@ -142,23 +145,27 @@ echo <<<EOF
                     </tr>
                 </thead>
                 <tbody>
+
 EOF;
+
     while ($post = mysql_fetch_array($result)) {
 
         $date = formatdate($post["date"]);
 
-echo <<<EOF
+        echo <<<EOF
                     <tr>
                         <td><a href="thread.php?thread_id={$post["thread_id"]}#post-{$post["post_id"]}">{$post["title"]}</a></td>
                         <td><span title="{$date[1]}">{$date[0]}</span></td>
-                    </tr>                                
+                    </tr>
+
 EOF;
 
     };
 
-echo <<<EOF
+    echo <<<EOF
                 </tbody>
             </table>
+
 EOF;
 
 };

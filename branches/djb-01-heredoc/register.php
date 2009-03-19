@@ -140,7 +140,7 @@ EOF;
 
 } else {
 
-echo <<<EOF
+    echo <<<EOF
             <form action="register.php" method="post">
                 <table cellspacing="1" class="content">
                     <tr>
@@ -167,6 +167,7 @@ echo <<<EOF
                     </tr>
                 </table>
             </form>
+
 EOF;
 
 };

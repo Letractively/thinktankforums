@@ -40,10 +40,11 @@ require_once "include_header.php";
 
 if (isset($ttf["uid"])) {
 
-echo <<<EOF
+    echo <<<EOF
             <div class="sidebox">
                 <strong><a href="newthread.php?forum_id={$forum_id}">create a new thread</a></strong>
             </div>
+
 EOF;
 
 };
@@ -72,10 +73,11 @@ if ($numrows > ($ttf_cfg["forum_display"] + $offset)) {
     $next = $offset + $ttf_cfg["forum_display"];
     $left = min($numrows - $offset - $ttf_cfg["forum_display"], $ttf_cfg["forum_display"]);
 
-echo <<<EOF
+    echo <<<EOF
             <div class="sidebox">
                 <strong><a href="forum.php?forum_id={$forum_id}&amp;offset={$next}">next {$left} threads</a></strong><br /><span class="small">{$numrows} total</span>
             </div>
+
 EOF;
 
 };
@@ -99,6 +101,7 @@ echo <<<EOF
                     </tr>
                 </thead>
                 <tbody>
+
 EOF;
 
 while ($thread = mysql_fetch_array($result)) {
@@ -135,6 +138,7 @@ echo <<<EOF
                     </tr>
                 </tbody>
             </table>
+
 EOF;
 
 require_once "include_footer.php";
