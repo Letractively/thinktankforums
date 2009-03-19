@@ -67,7 +67,7 @@ list($numthreads) = mysql_fetch_array($result);
 
 if (isset($user["avatar_type"])) {
 
-		echo "                    <img src=\"avatars/{$user["user_id"]}.{$user["avatar_type"]}\" alt=\"av\" width=\"30\" height=\"30\" />";
+    echo "                    <img src=\"avatars/{$user["user_id"]}.{$user["avatar_type"]}\" alt=\"av\" width=\"30\" height=\"30\" />";
 
 } else {
 
@@ -83,7 +83,7 @@ echo <<<EOF
                 {$user["title"]}
             </div>
             <div class="contentbox_sm">
-								{$user["profile"]}
+                {$user["profile"]}
             </div>
             <table cellspacing="1" class="content">
                 <thead>
