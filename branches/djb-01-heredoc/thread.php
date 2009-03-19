@@ -144,9 +144,7 @@ EOF;
 
     if ($hasperm) {
 
-
-				echo "                    <a class=\"link\" href=\"revise.php?post_id={$post["post_id"]}\">revise</a>";
-
+        echo "                    <a class=\"link\" href=\"revise.php?post_id={$post["post_id"]}\">revise</a>";
 
     };
 
