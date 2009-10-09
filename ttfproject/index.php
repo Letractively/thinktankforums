@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>The Think Tank Forums Project: Web forum software for the data obsessed</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="style.php" />
         <link rel="icon" type="image/png" href="/images/icon.png" />
     </head>
     <body>

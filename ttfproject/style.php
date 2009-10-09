@@ -1,3 +1,8 @@
+<?php
+
+header('Content-Type: text/css; charset=utf-8');
+
+?>
 * {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
@@ -10,6 +15,7 @@ body {
     font-size: 1em;
     line-height: 1.4em;
     font-family: sans-serif;
+    color: black;
 }
 
 a {
